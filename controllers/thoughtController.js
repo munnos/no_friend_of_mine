@@ -1,6 +1,6 @@
 const { User, Thought } = require('../models');
 
-const thoughtsController = {
+const thoughtController = {
 getallThoughts (req, res) {
     Thought.find()
     .sort({ createdAt: -1 })
@@ -52,10 +52,72 @@ createThought(req,res) {
 
 UpdateThought(req,res) {
     Thought.findOneAndUpdate({ _id: req.params.thoughtId }, {$set: req.body}, { runValidators: true, new: true })
-    .then
+    .then((data) => {
+        if (!data) {
+            return res.status(404).json({message: "Thought with this ID does not exist"});
+        }
+        res.status(data);
+    })
+    .catch((error) => {
+        console.log(error);
+        res.status(500).json(error);
 
-}
+    });
+
+
+},
 
 deleteThought(req,res) {
+    Thought.findOneAndDelete({ _id: req.params.thoughtId})
+    .then((data) => {
+        if (!data) {
+            return res.status(404).json({message: "Thought with this ID does not exist"});
+        }
+        res.json(data);
+    })
+    .catch((error) => {
+        console.log(error);
+        res.status(500).json(error);
+    });
 
+},
+
+addReaction(req,res) {
+    Thought.findOneAndUpdate(
+        {_id: req.params.thoughtId},
+        { $addToSet: {reactions: req.body }},
+        { runValidators: true, new: true }
+    )
+    .then((data) => {
+        if(!data) {
+            return res.status(404).json({ message: "Thought with this ID does not exist"});
+        }
+        res.json(data);
+    })
+    .catch((error) => {
+        console.log(error);
+            res.status(500).json(error);
+    });
+
+},
+
+deleteReaction(req,res) {
+    Thought.findOneAndUpdate(
+        { _id: req.params.thoughtId},
+        {$pull: { reactions: {reactionId: req.params.reactionId}}},
+        { runValidators: true, new: true}
+    )
+    .then((data) => {
+        if (!data) {
+            return res.status(404).json({ message: "Thought with this ID does not exist"});
+        }
+        res.json(data);
+    })
+    .catch((error) => {
+        console.log(error);
+        res.status(500).json(error);
+    }); 
+},
 }
+
+module.exports = thoughtController;
