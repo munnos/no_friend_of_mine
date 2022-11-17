@@ -50,7 +50,7 @@ createThought(req,res) {
     });
 },
 
-UpdateThought(req,res) {
+updateThought(req,res) {
     Thought.findOneAndUpdate({ _id: req.params.thoughtId }, {$set: req.body}, { runValidators: true, new: true })
     .then((data) => {
         if (!data) {
