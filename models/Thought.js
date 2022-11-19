@@ -1,8 +1,9 @@
+const mongoose = require('mongoose');
 const { Schema, model } = require('mongoose');
 const reactionSchema = require('./Reaction');
 const formatdate = require('../utils/FormatDate');
 // Defining relevant fields for the schema
-const thoughtSchema = new Schema(
+const thoughtSchema = new mongoose.Schema(
     {
         thoughtText: {
             type: String,

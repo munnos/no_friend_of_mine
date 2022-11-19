@@ -1,7 +1,8 @@
+const mongoose = require('mongoose');
 const { Schema, model } = require("mongoose");
 
 // Defining relevant fields for the schema
-const userSchema = new Schema(
+const userSchema = new mongoose.Schema(
     {
         username: {
             type: String,
@@ -31,13 +32,13 @@ const userSchema = new Schema(
             },
         ], 
     },
-    {
-        converttoJSON: {
-            virtuals: true,
-            getters: true,
-        },
-        id: false,
-    },
+    // {
+    //     // converttoJSON: {
+    //     //     virtuals: true,
+    //     //     getters: true,
+    //     },
+    //     id: false,
+    // },
 );
 
 userSchema.virtual('countFriend').get(function () {

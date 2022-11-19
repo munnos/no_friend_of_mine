@@ -1,6 +1,24 @@
 {
+  "name": "no_friend_of_mine",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
   "dependencies": {
     "express": "^4.18.2",
-    "mongoose": "^6.7.1"
-  }
+    "mongoose": "^6.7.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/munnos/no_friend_of_mine"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/munnos/no_friend_of_mine"
+  },
+  "homepage": "https://github.com/munnos/no_friend_of_mine"
 }

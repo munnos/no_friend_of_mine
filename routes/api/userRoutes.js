@@ -10,4 +10,8 @@ const { getallUsers,
 
     router.route('/').get(getallUsers).post(createUser)
 
-    router.route('/:userid').get(getUser).put()
+    router.route('/:userid').get(getuserbyId).put(updateUser).delete(deleteUser);
+
+    router.route('/:userid/friends/:friendid').post(addFriend).delete(deleteFriend)
+
+    module.exports = router;

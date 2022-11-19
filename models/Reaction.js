@@ -1,7 +1,8 @@
+const mongoose = require('mongoose');
 const { Schema, Types } = require('mongoose');
 
 // Defining relevant fields for the schema
-const reactionSchema = new Schema({
+const reactionSchema = new mongoose.Schema({
     reactionId: {
         type: mongoose.Schema.Types.ObjectId,
         default: () => new Types.ObjectId()
@@ -21,12 +22,12 @@ const reactionSchema = new Schema({
 
     }
     },
-    {
-        converttoJSON: {
-            getters: trusted
-        },
-        id: false
-    }
+    // {
+    //     converttoJSON: {
+    //         getters: trusted
+    //     },
+    //     id: false
+    // }
 );
 
 module.exports = reactionSchema;
