@@ -55,7 +55,7 @@ const userController = {
       .populate("friends")
       .populate("thoughts")
       .then((data) => {
-        if (data) {
+        if (!data) {
           return res.status(404).json({ message: "No user found with this ID" });
         }
         res.json(data);
