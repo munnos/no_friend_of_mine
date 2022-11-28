@@ -10,7 +10,7 @@
 ## Table of Contents
 * [Installation](#installation)
 * [Usage](#usage)
-* [Issues/Future development] (#Issues/Future development)
+* [Known Issues] (#known-issues)
 * [Screenshot](#screenshot)
 * [License](#license)
 * [Contributing](#contributing)
